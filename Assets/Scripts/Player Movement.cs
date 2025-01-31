@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float thrustForce = 5f;
-    [SerializeField] float maxYSpeed = 5f;
+    //[SerializeField] float thrustForce = 5f;
+    //[SerializeField] float maxYSpeed = 5f;
     
     Rigidbody2D rb;
     
