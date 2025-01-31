@@ -23,5 +23,7 @@ public class PlayerMovement : MonoBehaviour
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y + thrustForce * Time.deltaTime, -maxYSpeed, maxYSpeed));
             Debug.Log("Space key was pressed");
         }
+
+        //denemelik comment
     }
 }
