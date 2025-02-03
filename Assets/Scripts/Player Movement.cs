@@ -1,29 +1,46 @@
 using UnityEngine;
+using UnityEngine.InputSystem; // Yeni Input System
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[SerializeField] float thrustForce = 5f;
-    //[SerializeField] float maxYSpeed = 5f;
-    
+    [SerializeField] InputAction fly; // Yeni Input System
+    [SerializeField] float flyPower = 5f;
     Rigidbody2D rb;
-    
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y + thrustForce * Time.deltaTime, -maxYSpeed, maxYSpeed));
-            Debug.Log("Space key was pressed");
-        }
-
-        //denemelik comment
+        fly.Enable(); // Yeni Input System
     }
+
+    private void FixedUpdate() 
+    {
+        ProcessFly();
+    }
+
+    private void ProcessFly()
+    {
+        if(fly.IsPressed()) // Yeni Input System
+        {
+            //Debug.Log("Fly");
+            StartFlying();
+        }
+        else
+        StopFlying();
+    }
+
+    private void StartFlying()
+    {
+        Debug.Log("Fly");
+        rb.AddRelativeForce(Vector2.up * flyPower * Time.deltaTime);
+    }
+
+    private void StopFlying()
+    {
+        //Debug.Log("Stop Fly");
+    }
+
 }

@@ -546,7 +546,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -616,8 +616,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ac1d4d5fafb4f919a38cc25cf2d1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxYSpeed: 5
+  fly:
+    m_Name: Fly
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0e88008e-9e4a-4ff5-9b9f-f55a724b369f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 217da0b9-f1ed-48ca-8728-f0254c73cfb2
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fly
+      m_Flags: 0
+    m_Flags: 0
+  flyPower: 2000
 --- !u!1 &1706527400
 GameObject:
   m_ObjectHideFlags: 0
