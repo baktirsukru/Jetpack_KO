@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -10,7 +11,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float platformSize = 20f;
     [SerializeField] float platformSpeed = 5f;
 
-    GameObject[] platforms = new GameObject[3];
+    //GameObject[] platforms = new GameObject[3];
+    List<GameObject> platforms = new List<GameObject>();
     void Start()
     {
         GeneratePlatforms();
@@ -25,26 +27,32 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < startingNumberOfPlatforms; i++)
         {
-            float startPositionX = SpawnPositionCalculation(i);
-
-            Vector2 spawnPosition = new Vector2(startPositionX, transform.position.y);
-            GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity, platformParent);
-
-            platforms[i] = newPlatform;
+            SinglePlatformGenerate();
         }
     }
 
-    private float SpawnPositionCalculation(int i)
+    private void SinglePlatformGenerate()
+    {
+        float startPositionX = SpawnPositionCalculation();
+
+        Vector2 spawnPosition = new Vector2(startPositionX, transform.position.y);
+        GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity, platformParent);
+
+        //platforms[i] = newPlatform;
+        platforms.Add(newPlatform);
+    }
+
+    private float SpawnPositionCalculation()
     {
         float startPositionX;
 
-        if (i == 0)
+        if (platforms.Count == 0)
         {
             startPositionX = transform.position.x;
         }
         else
         {
-            startPositionX = transform.position.x + i * platformSize;
+            startPositionX = platforms[platforms.Count - 1].transform.position.x + platformSize;
         }
 
         return startPositionX;
@@ -52,17 +60,17 @@ public class LevelGenerator : MonoBehaviour
 
     void MovePlatforms()
     {
-        for (int i = 0; i < platforms.Length; i++)
+        for (int i = 0; i < platforms.Count; i++)
         {
             GameObject currentPlatform = platforms[i];
 
-            platforms[i].transform.position = new Vector2(platforms[i].transform.position.x - platformSpeed * Time.deltaTime, platforms[i].transform.position.y);
+            currentPlatform.transform.position = new Vector2(platforms[i].transform.position.x - platformSpeed * Time.deltaTime, platforms[i].transform.position.y);
 
             if (platforms[i].transform.position.x < -platformSize)
             {
-                /* platforms.(currentPlatform);
+                platforms.Remove(currentPlatform);
                 Destroy(currentPlatform);
-                GeneratePlatforms(); */
+                SinglePlatformGenerate();
             }
         }
     }

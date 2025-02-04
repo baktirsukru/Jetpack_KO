@@ -34,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartFlying()
     {
-        Debug.Log("Fly");
+        //Debug.Log("Fly");
         rb.AddRelativeForce(Vector2.up * flyPower * Time.deltaTime);
-        //random comment
+        
     }
 
     private void StopFlying()
