@@ -13,7 +13,13 @@ public class PlayerHealth : MonoBehaviour
         {
             health--;
             Debug.Log("Health: " + health);
-            //Destroy(player);
+            
+
+            if(health <= 0)
+            {
+                Debug.Log("Game Over");
+                Destroy(player);
+            }
         }
     }
 }
