@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Transform platformParent;
     [SerializeField] float platformSize = 20f;
     [SerializeField] float platformSpeed = 5f;
-    
+
     List<GameObject> platforms = new List<GameObject>();
     void Start()
     {
@@ -63,7 +63,8 @@ public class LevelGenerator : MonoBehaviour
         {
             GameObject currentPlatform = platforms[i];
 
-            currentPlatform.transform.position = new Vector2(platforms[i].transform.position.x - platformSpeed * Time.deltaTime, platforms[i].transform.position.y);
+            //currentPlatform.transform.position = new Vector2(platforms[i].transform.position.x - platformSpeed * Time.deltaTime, platforms[i].transform.position.y);
+            currentPlatform.transform.Translate(-transform.right * (platformSpeed * Time.deltaTime));
 
             if (platforms[i].transform.position.x < -platformSize)
             {
