@@ -143,6 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4636167349841810286}
+  - component: {fileID: 8823532962979772717}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -167,6 +168,23 @@ Transform:
   - {fileID: 3850502053308081277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8823532962979772717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7327806989999933883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b29fe8ba24344269d12e8c9316b4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 4676555737962589850, guid: ae39f88a2aa1c4c21aae30f6a74a897d, type: 3}
+  lanes:
+  - -2.5
+  - 0
+  - 2.5
 --- !u!1 &7806791866259958751
 GameObject:
   m_ObjectHideFlags: 0
