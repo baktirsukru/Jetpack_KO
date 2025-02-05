@@ -10,8 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Transform platformParent;
     [SerializeField] float platformSize = 20f;
     [SerializeField] float platformSpeed = 5f;
-
-    //GameObject[] platforms = new GameObject[3];
+    
     List<GameObject> platforms = new List<GameObject>();
     void Start()
     {

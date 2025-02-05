@@ -1,0 +1,34 @@
+{
+    "name": "Fly",
+    "maps": [
+        {
+            "name": "Fly",
+            "id": "1fccf8b7-24ba-42b8-ab6f-f87494ac92d5",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "d939499f-b6bf-4cbe-93ce-163c1faca340",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9c9cc667-1665-4829-8e30-954243c04a42",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

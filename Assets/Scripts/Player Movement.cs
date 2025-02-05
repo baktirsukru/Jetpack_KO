@@ -3,7 +3,7 @@ using UnityEngine.InputSystem; // Yeni Input System
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] InputAction fly; // Yeni Input System
+    [SerializeField] InputAction Fly; // Yeni Input System
     [SerializeField] float flyPower = 5f;
     Rigidbody2D rb;
 
@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnEnable()
     {
-        fly.Enable(); // Yeni Input System
+        Fly.Enable(); // Yeni Input System
     }
 
     private void FixedUpdate() 
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ProcessFly()
     {
-        if(fly.IsPressed()) // Yeni Input System
+        if(Fly.IsPressed()) // Yeni Input System
         {
             //Debug.Log("Fly");
             StartFlying();
@@ -43,5 +43,4 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Stop Fly");
     }
-
 }
