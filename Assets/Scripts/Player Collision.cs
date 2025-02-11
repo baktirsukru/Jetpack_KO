@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find("Player Model").GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
     }
 

@@ -37,7 +37,6 @@ public class LevelGenerator : MonoBehaviour
         Vector2 spawnPosition = new Vector2(startPositionX, transform.position.y);
         GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity, platformParent);
 
-        //platforms[i] = newPlatform;
         platforms.Add(newPlatform);
     }
 
@@ -63,7 +62,6 @@ public class LevelGenerator : MonoBehaviour
         {
             GameObject currentPlatform = platforms[i];
 
-            //currentPlatform.transform.position = new Vector2(platforms[i].transform.position.x - platformSpeed * Time.deltaTime, platforms[i].transform.position.y);
             currentPlatform.transform.Translate(-transform.right * (platformSpeed * Time.deltaTime));
 
             if (platforms[i].transform.position.x < -platformSize)
