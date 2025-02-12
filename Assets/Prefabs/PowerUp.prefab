@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1619248154120704486}
   - component: {fileID: 3946806509855899576}
   - component: {fileID: 1959961394688928098}
+  - component: {fileID: -7987135277519308286}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: Untagged
@@ -138,3 +139,15 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 0
+--- !u!114 &-7987135277519308286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374131575778868352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3229353c8dc44f4981e5ff97c0ca0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
