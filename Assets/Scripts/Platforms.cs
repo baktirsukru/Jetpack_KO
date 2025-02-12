@@ -11,9 +11,13 @@ public class Platforms : MonoBehaviour
     [Header ("Settings")]
     [SerializeField] float powerUpSpawnChance = 0.3f;
     [SerializeField] float coinSpawnChance = 0.5f;
-    [SerializeField] float[] lanes = { -2.5f, 1f, 0f, 1f, 2.5f }; // Platformların olabileceği dikey pozisyonlar
+    [SerializeField] float[] lanes = { -2.5f, 1f, 0f, 1f, 2.5f }; // Obstacleların olabileceği dikey pozisyonlar
+    //[SerializeField] float[] columns = { -7.5f, 0, 7.5f }; 
+
 
     List<int> availableLanes = new List<int>{0, 1, 2}; // Kullanılabilir dikey pozisyonlar
+    //List<int> availableColumns = new List<int>{0, 1, 2}; // Kullanılabilir yatay pozisyonlar
+
 
     void Start()
     {
@@ -39,6 +43,7 @@ public class Platforms : MonoBehaviour
         if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
 
         int selectedLane = SelectLanes();
+        //int selectedColumn = SelectColumns();
         Vector2 spawnPosition = new Vector2(transform.position.x, lanes[selectedLane]); // Dikey pozisyonu belirle
         Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform); // Coin oluştur
     }
@@ -59,5 +64,13 @@ public class Platforms : MonoBehaviour
         availableLanes.RemoveAt(randomLane); // Kullanılan dikey pozisyonu listeden çıkar
         return selectedLane;
     }
+
+/*     int SelectColumns()
+    {
+        int randomColumn = Random.Range(0, availableColumns.Count); // Rastgele bir yatay pozisyon seç
+        int selectedColumn = availableColumns[randomColumn]; // Seçilen yatay pozisyonu al
+        availableColumns.RemoveAt(randomColumn); // Kullanılan yatay pozisyonu listeden çıkar
+        return selectedColumn;
+    } */
 
 }
