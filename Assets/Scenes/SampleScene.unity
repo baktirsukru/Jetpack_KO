@@ -153,6 +153,8 @@ MonoBehaviour:
   platformParent: {fileID: 497308730}
   platformSize: 20
   platformSpeed: 10
+  minPlatformSpeed: 5
+  maxPlatformSpeed: 100
 --- !u!4 &297586842
 Transform:
   m_ObjectHideFlags: 0

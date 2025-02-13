@@ -26,26 +26,27 @@ public class LevelGenerator : MonoBehaviour
         MovePlatforms();
     }
 
-    public void SpeedUpPlatforms(float speedAmount)//, float duration) // PowerUp.cs
+    public void SpeedUpPlatforms(float speedAmount, float duration) // PowerUp.cs
     {
-        //StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
+        StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
 
-        //Debug.Log("Speed Boost Coroutine Started");
-        float newPlatformSpeed = platformSpeed + speedAmount;
-        newPlatformSpeed = Mathf.Clamp(newPlatformSpeed, minPlatformSpeed, maxPlatformSpeed);
-        platformSpeed = newPlatformSpeed;
-        
 
-        Debug.Log("Speed Boosted");
+        //Debug.Log("Speed Boosted");
     }
 
-    /* public IEnumerator SpeedBoostCoroutine(float speedAmount, float duration) // PowerUp.cs
+    public IEnumerator SpeedBoostCoroutine(float speedAmount, float duration) // PowerUp.cs
     {
+        Debug.Log("Speed Boost Coroutine Started");
+        float newPlatformSpeed = platformSpeed + speedAmount;
+        newPlatformSpeed = Mathf.Clamp(newPlatformSpeed, minPlatformSpeed, maxPlatformSpeed);
+        //platformSpeed = Mathf.Lerp(platformSpeed, newPlatformSpeed, Time.deltaTime); //saçma sapan bişey yapıyo
+        platformSpeed = newPlatformSpeed;
 
         yield return new WaitForSeconds(duration);
 
-        newPlatformSpeed = platformSpeed;
-    } */
+        //platformSpeed = Mathf.Lerp(platformSpeed, platformSpeed - speedAmount, Time.deltaTime);
+        platformSpeed -= speedAmount;
+    }
 
     void GeneratePlatforms()
     {
@@ -67,6 +68,8 @@ public class LevelGenerator : MonoBehaviour
         Platforms platform = newPlatform.GetComponent<Platforms>(); //Burda da GetComponent<Platforms>() kullanmam gerekiyo.
         //Her platform oluşturduğumda onun içindeki Init fonksiyonunu çağırmam gerekiyo.
         platform.Init(this);
+
+        
 
 
     }

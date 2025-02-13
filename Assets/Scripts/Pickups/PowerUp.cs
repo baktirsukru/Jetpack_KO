@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerUp : Pickup
 {
-    //[SerializeField] private float powerUpDuration = 5f;
+    [SerializeField] private float powerUpDuration = 1f;
     [SerializeField] private float powerUpSpeedAmount = 10f;
     LevelGenerator levelGenerator;
 
@@ -14,8 +14,8 @@ public class PowerUp : Pickup
     protected override void OnPickup()
     {
         Debug.Log("PowerUp Collected");
-        levelGenerator.SpeedUpPlatforms(powerUpSpeedAmount);//, powerUpDuration);
-        //
+        levelGenerator.SpeedUpPlatforms(powerUpSpeedAmount, powerUpDuration);
+        
     }
 }
 

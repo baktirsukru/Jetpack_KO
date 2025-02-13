@@ -4,6 +4,9 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health = 3;
     [SerializeField] GameObject player;
+    [SerializeField] LevelGenerator levelGenerator;
+    [SerializeField] BackgroundScroller backgroundScroller;
+
 
 
 
@@ -18,7 +21,9 @@ public class PlayerHealth : MonoBehaviour
             if(health <= 0)
             {
                 Debug.Log("Game Over");
-                Destroy(player);
+                levelGenerator.enabled = false;
+                backgroundScroller.enabled = false;
+                player.SetActive(false);
             }
         }
     }
