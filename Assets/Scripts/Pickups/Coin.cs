@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Coin : Pickup
 {
+    int point;
     protected override void OnPickup()
     {
-        Debug.Log("Coin Collected");
+        point = point + 100;
+        Debug.Log(point);
     }
 }
