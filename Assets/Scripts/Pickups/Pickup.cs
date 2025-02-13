@@ -8,7 +8,8 @@ public abstract class Pickup : MonoBehaviour
     {
         if (other.CompareTag(playerString))
         {
-            OnPickup();
+            OnPickup(); 
+            Debug.Log("Pickup Collected");
             Destroy(gameObject);
         }
     }

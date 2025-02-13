@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Platforms : MonoBehaviour
@@ -12,11 +13,19 @@ public class Platforms : MonoBehaviour
     [SerializeField] float powerUpSpawnChance = 0.3f;
     [SerializeField] float coinSpawnChance = 0.5f;
     [SerializeField] float[] lanes = { -2.5f, 1f, 0f, 1f, 2.5f }; // Obstacleların olabileceği dikey pozisyonlar
-    //[SerializeField] float[] columns = { -7.5f, 0, 7.5f }; 
+
+    //[SerializeField] float[] columns = { -7.5f, 0, 7.5f };
 
 
     List<int> availableLanes = new List<int>{0, 1, 2}; // Kullanılabilir dikey pozisyonlar
     //List<int> availableColumns = new List<int>{0, 1, 2}; // Kullanılabilir yatay pozisyonlar
+
+    LevelGenerator levelGenerator;
+
+    public void Init(LevelGenerator levelGenerator)
+    {
+        this.levelGenerator = levelGenerator;
+    }
 
 
     void Start()
@@ -47,14 +56,15 @@ public class Platforms : MonoBehaviour
         Vector2 spawnPosition = new Vector2(transform.position.x, lanes[selectedLane]); // Dikey pozisyonu belirle
         Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform); // Coin oluştur
     }
-
+ 
     void SpawnPowerUp()
     {
         if(Random.value > powerUpSpawnChance || availableLanes.Count <= 0) return; // failsafe
 
         int selectedLane = SelectLanes();
         Vector2 spawnPosition = new Vector2(transform.position.x, lanes[selectedLane]); // Dikey pozisyonu belirle
-        Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity, this.transform); // PowerUp oluştur
+        PowerUp newPowerUp = Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity, this.transform).GetComponent<PowerUp>(); // PowerUp oluştur
+        newPowerUp.Init(levelGenerator); //çözüm olma ihtimali var ama hem yukarda GetComponent kullanmam gerekiyor hem de Init fonksiyonunu çağırmam gerekiyor
     }
 
     int SelectLanes()
