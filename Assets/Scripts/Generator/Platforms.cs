@@ -13,6 +13,7 @@ public class Platforms : MonoBehaviour
     [Header ("Settings")]
     [SerializeField] float powerUpSpawnChance = 0.3f;
     [SerializeField] float coinSpawnChance = 0.5f;
+    [SerializeField] float coinSeperationLength = 2f;
     [SerializeField] float[] lanes = { -2.5f, 1f, 0f, 1f, 2.5f }; // Obstacleların olabileceği dikey pozisyonlar
     [SerializeField] float[] XOffset = { -10f, -5f, 0f, 5f, 10f }; // Obstacleların olabileceği yatay pozisyonlar
     
@@ -49,7 +50,7 @@ public class Platforms : MonoBehaviour
         }
     }
 
-    void SpawnCoins()
+    /* void SpawnCoins()
     {
         if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
 
@@ -57,7 +58,33 @@ public class Platforms : MonoBehaviour
         float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
         Vector2 spawnPosition = new Vector2(transform.position.x + randomXOffset, lanes[selectedLane]); // Dikey pozisyonu belirle
         Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform); // Coin oluştur
+    } */
+
+    void SpawnCoins()
+{
+    if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
+
+    int selectedLane = SelectLanes(); // Coin'ların spawnlanacağı dikey pozisyonu seçiyoruz
+    int maxCoinsToSpawn = 6;
+    int coinsToSpawn = Random.Range(1, maxCoinsToSpawn);
+
+    // Coin'ların başlangıç x pozisyonu, XOffset array'inden rastgele seçilen bir offset ile belirleniyor
+    float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
+    float startX = transform.position.x + randomXOffset;
+    float laneY = lanes[selectedLane];
+
+    for (int i = 0; i < coinsToSpawn; i++)
+    {
+        // Her coin, coinSeperationLength kadar artan x pozisyonunda spawnlanıyor
+        float coinX = startX + (i * coinSeperationLength);
+        Vector2 spawnPosition = new Vector2(coinX, laneY);
+        Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform);
+        
     }
+}
+
+
+
  
     void SpawnPowerUp()
     {
