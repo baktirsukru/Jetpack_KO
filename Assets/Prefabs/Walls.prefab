@@ -189,10 +189,12 @@ MonoBehaviour:
   - -3
   - 0
   - 3
-  columns:
+  XOffset:
+  - -8
+  - -4
   - 0
-  - 30
-  - 60
+  - 4
+  - 8
 --- !u!1 &7806791866259958751
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Platforms : MonoBehaviour
 {
@@ -13,9 +14,8 @@ public class Platforms : MonoBehaviour
     [SerializeField] float powerUpSpawnChance = 0.3f;
     [SerializeField] float coinSpawnChance = 0.5f;
     [SerializeField] float[] lanes = { -2.5f, 1f, 0f, 1f, 2.5f }; // Obstacleların olabileceği dikey pozisyonlar
-
-
-
+    [SerializeField] float[] XOffset = { -10f, -5f, 0f, 5f, 10f }; // Obstacleların olabileceği yatay pozisyonlar
+    
     List<int> availableLanes = new List<int>{0, 1, 2}; // Kullanılabilir dikey pozisyonlar
 
 
@@ -41,8 +41,8 @@ public class Platforms : MonoBehaviour
         for (int i = 0; i < obstaclesToSpawn; i++)
         {
             int selectedLane = SelectLanes();
-
-            Vector2 spawnPosition = new Vector2(transform.position.x, lanes[selectedLane]); // Dikey pozisyonu belirle
+            float randomXOffset = XOffset[Random.Range(0, XOffset.Length)]; // Yatay Offset belirle
+            Vector2 spawnPosition = new Vector2(transform.position.x + randomXOffset, lanes[selectedLane]); // Dikey pozisyonu belirle
 
 
             Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity, this.transform); // Obstacle oluştur
@@ -54,8 +54,8 @@ public class Platforms : MonoBehaviour
         if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
 
         int selectedLane = SelectLanes();
-        
-        Vector2 spawnPosition = new Vector2(transform.position.x, lanes[selectedLane]); // Dikey pozisyonu belirle
+        float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
+        Vector2 spawnPosition = new Vector2(transform.position.x + randomXOffset, lanes[selectedLane]); // Dikey pozisyonu belirle
         Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform); // Coin oluştur
     }
  
@@ -64,7 +64,8 @@ public class Platforms : MonoBehaviour
         if(Random.value > powerUpSpawnChance || availableLanes.Count <= 0) return; // failsafe
 
         int selectedLane = SelectLanes();
-        Vector2 spawnPosition = new Vector2(transform.position.x, lanes[selectedLane]); // Dikey pozisyonu belirle
+        float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
+        Vector2 spawnPosition = new Vector2(transform.position.x + randomXOffset, lanes[selectedLane]); // Dikey pozisyonu belirle
         PowerUp newPowerUp = Instantiate(powerUpPrefab, spawnPosition, Quaternion.identity, this.transform).GetComponent<PowerUp>(); // PowerUp oluştur
         newPowerUp.Init(levelGenerator); //çözüm olma ihtimali var ama hem yukarda GetComponent kullanmam gerekiyor hem de Init fonksiyonunu çağırmam gerekiyor
     }

@@ -39,12 +39,11 @@ public class LevelGenerator : MonoBehaviour
         Debug.Log("Speed Boost Coroutine Started");
         float newPlatformSpeed = platformSpeed + speedAmount;
         newPlatformSpeed = Mathf.Clamp(newPlatformSpeed, minPlatformSpeed, maxPlatformSpeed);
-        //platformSpeed = Mathf.Lerp(platformSpeed, newPlatformSpeed, Time.deltaTime); //saçma sapan bişey yapıyo
+
         platformSpeed = newPlatformSpeed;
 
         yield return new WaitForSeconds(duration);
 
-        //platformSpeed = Mathf.Lerp(platformSpeed, platformSpeed - speedAmount, Time.deltaTime);
         platformSpeed -= speedAmount;
     }
 
@@ -66,12 +65,8 @@ public class LevelGenerator : MonoBehaviour
         platforms.Add(newPlatform);
 
         Platforms platform = newPlatform.GetComponent<Platforms>(); //Burda da GetComponent<Platforms>() kullanmam gerekiyo.
-        //Her platform oluşturduğumda onun içindeki Init fonksiyonunu çağırmam gerekiyo.
+
         platform.Init(this);
-
-        
-
-
     }
 
     private float SpawnPositionCalculation()
