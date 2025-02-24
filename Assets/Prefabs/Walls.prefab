@@ -183,7 +183,7 @@ MonoBehaviour:
   obstaclePrefab: {fileID: 4676555737962589850, guid: ae39f88a2aa1c4c21aae30f6a74a897d, type: 3}
   coinPrefab: {fileID: 8245143912457765012, guid: f38b8d5bb5ded464a8202b8b64e4758d, type: 3}
   powerUpPrefab: {fileID: 8374131575778868352, guid: ccc8b901aa0df4f979ff9e350fe6c702, type: 3}
-  powerUpSpawnChance: 1
+  powerUpSpawnChance: 0.3
   coinSpawnChance: 0.5
   lanes:
   - -3
