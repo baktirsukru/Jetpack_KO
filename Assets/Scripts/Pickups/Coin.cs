@@ -1,11 +1,20 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Coin : Pickup
 {
-    int point;
+    [SerializeField] int scoreAmount = 100;
+    private ScoreManager scoreManager;
+    
+
+    void Awake()
+    {
+        scoreManager = FindFirstObjectByType<ScoreManager>();
+    }
+
+
     protected override void OnPickup()
     {
-        point = point + 100;
-        Debug.Log(point);
+        scoreManager.IncreaseScore(scoreAmount);
     }
 }
