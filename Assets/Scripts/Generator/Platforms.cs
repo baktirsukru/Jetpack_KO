@@ -61,30 +61,27 @@ public class Platforms : MonoBehaviour
     } */
 
     void SpawnCoins()
-{
-    if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
-
-    int selectedLane = SelectLanes(); // Coin'ların spawnlanacağı dikey pozisyonu seçiyoruz
-    int maxCoinsToSpawn = 6;
-    int coinsToSpawn = Random.Range(1, maxCoinsToSpawn);
-
-    // Coin'ların başlangıç x pozisyonu, XOffset array'inden rastgele seçilen bir offset ile belirleniyor
-    float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
-    float startX = transform.position.x + randomXOffset;
-    float laneY = lanes[selectedLane];
-
-    for (int i = 0; i < coinsToSpawn; i++)
     {
-        // Her coin, coinSeperationLength kadar artan x pozisyonunda spawnlanıyor
-        float coinX = startX + (i * coinSeperationLength);
-        Vector2 spawnPosition = new Vector2(coinX, laneY);
-        Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform);
-        
+        if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
+
+        int selectedLane = SelectLanes(); // Coin'ların spawnlanacağı dikey pozisyonu seçiyoruz
+        int maxCoinsToSpawn = 6;
+        int coinsToSpawn = Random.Range(1, maxCoinsToSpawn);
+
+        // Coin'ların başlangıç x pozisyonu, XOffset array'inden rastgele seçilen bir offset ile belirleniyor
+        float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
+        float startX = transform.position.x + randomXOffset;
+        float laneY = lanes[selectedLane];
+
+        for (int i = 0; i < coinsToSpawn; i++)
+        {
+            // Her coin, coinSeperationLength kadar artan x pozisyonunda spawnlanıyor
+            float coinX = startX + (i * coinSeperationLength);
+            Vector2 spawnPosition = new Vector2(coinX, laneY);
+            Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform);
+            
+        }
     }
-}
-
-
-
  
     void SpawnPowerUp()
     {
