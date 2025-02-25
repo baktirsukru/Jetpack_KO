@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2679216439850222656}
   - component: {fileID: 7165877886369096790}
   - component: {fileID: 8559806152822213125}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   powerUpPrefab: {fileID: 8374131575778868352, guid: ccc8b901aa0df4f979ff9e350fe6c702, type: 3}
   powerUpSpawnChance: 0.3
   coinSpawnChance: 0.5
+  coinSeperationLength: 2
   lanes:
   - -3
   - 0
