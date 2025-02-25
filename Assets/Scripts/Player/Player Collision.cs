@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = transform.Find("walk_side").GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find("Astro").GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
     }
 
