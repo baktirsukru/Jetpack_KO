@@ -69,7 +69,6 @@ public class Platforms : MonoBehaviour
             float coinX = startX + (i * coinSeperationLength);
             Vector2 spawnPosition = new Vector2(coinX, laneY);
             Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform);
-            
         }
     }
  

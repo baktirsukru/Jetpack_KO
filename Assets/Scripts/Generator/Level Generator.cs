@@ -8,12 +8,16 @@ public class LevelGenerator : MonoBehaviour
 {
     [Header("Platform Settings")]
     [SerializeField] GameObject platformPrefab;
+    [SerializeField] GameObject startingPlatformPrefab;
     [SerializeField] int startingNumberOfPlatforms = 3;
     [SerializeField] Transform platformParent;
-    [SerializeField] float platformSize = 20f;
-    [SerializeField] float platformSpeed = 5f;
+    [SerializeField] public float platformSize = 20f;
+    [SerializeField] public float platformSpeed = 5f;
     [SerializeField] float minPlatformSpeed = 5f;
     [SerializeField] float maxPlatformSpeed = 100f;
+
+    int platformSpawned = 0;
+
     
 
     List<GameObject> platforms = new List<GameObject>();
@@ -49,12 +53,20 @@ public class LevelGenerator : MonoBehaviour
     }
 
     void GeneratePlatforms()
-    {
+    {    
         for (int i = 0; i < startingNumberOfPlatforms; i++)
         {
-            SinglePlatformGenerate();
+            if(i == 0)
+            {
+                Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity);
+                
+                //StartingPlatform();
+                
+            }
+            else SinglePlatformGenerate();
         }
     }
+
 
     private void SinglePlatformGenerate()
     {
@@ -68,7 +80,31 @@ public class LevelGenerator : MonoBehaviour
         Platforms platform = newPlatform.GetComponent<Platforms>(); //Burda da GetComponent<Platforms>() kullanmam gerekiyo.
 
         platform.Init(this);
+
+        platformSpawned++;
+
+        Debug.Log("Platform Spawned: " + platformSpawned);
+
     }
+    /* private void ChoosePlatformToSpawn()
+    {
+        if (platformSpawned == 0)
+        {
+            StartingPlatform();
+        }
+        else
+        {
+            // GeneratePlatforms();
+            SinglePlatformGenerate();
+        }
+    } */
+    /* void StartingPlatform()
+    {
+        Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity);
+        platformSpawned++;
+    } */
+
+
 
     private float SpawnPositionCalculation()
     {
@@ -76,7 +112,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (platforms.Count == 0)
         {
-            startPositionX = transform.position.x;
+            startPositionX = transform.position.x + platformSize;
         }
         else
         {
@@ -102,8 +138,9 @@ public class LevelGenerator : MonoBehaviour
                 Destroy(currentPlatform);
                 SinglePlatformGenerate();
             }
-
-        
         }
     }
+
+    
+
 }
