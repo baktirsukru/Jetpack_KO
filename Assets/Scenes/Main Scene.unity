@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 7327806989999933883, guid: 775abb4c333584c23ba88c0bccf0bcfa, type: 3}
-  startingNumberOfPlatforms: 3
+  startingNumberOfPlatforms: 5
   platformParent: {fileID: 497308730}
   platformSize: 20
   platformSpeed: 10
@@ -640,6 +640,7 @@ MonoBehaviour:
     m_Flags: 0
   flyPower: 2000
   animator: {fileID: 3433032876241637386}
+  isRunning: 0
 --- !u!114 &1474186989
 MonoBehaviour:
   m_ObjectHideFlags: 0

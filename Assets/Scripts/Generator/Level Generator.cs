@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float platformSpeed = 5f;
     [SerializeField] float minPlatformSpeed = 5f;
     [SerializeField] float maxPlatformSpeed = 100f;
+    
 
     List<GameObject> platforms = new List<GameObject>();
     void Start()
@@ -93,12 +94,16 @@ public class LevelGenerator : MonoBehaviour
 
             currentPlatform.transform.Translate(-transform.right * (platformSpeed * Time.deltaTime));
 
-            if (platforms[i].transform.position.x < -platformSize)
+            float platformDestroyOffset = platformSize * 2;
+
+            if (platforms[i].transform.position.x < (-platformDestroyOffset))
             {
                 platforms.Remove(currentPlatform);
                 Destroy(currentPlatform);
                 SinglePlatformGenerate();
             }
+
+        
         }
     }
 }

@@ -17,7 +17,7 @@ public class Platforms : MonoBehaviour
     [SerializeField] float[] lanes = { -2.5f, 1f, 0f, 1f, 2.5f }; // Obstacleların olabileceği dikey pozisyonlar
     [SerializeField] float[] XOffset = { -10f, -5f, 0f, 5f, 10f }; // Obstacleların olabileceği yatay pozisyonlar
     
-    List<int> availableLanes = new List<int>{0, 1, 2}; // Kullanılabilir dikey pozisyonlar
+    List<int> availableLanes = new List<int>{0, 1, 2, 3}; // Kullanılabilir dikey pozisyonlar
 
 
     LevelGenerator levelGenerator;
@@ -49,16 +49,6 @@ public class Platforms : MonoBehaviour
             Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity, this.transform); // Obstacle oluştur
         }
     }
-
-    /* void SpawnCoins()
-    {
-        if(Random.value > coinSpawnChance || availableLanes.Count <= 0) return; // failsafe
-
-        int selectedLane = SelectLanes();
-        float randomXOffset = XOffset[Random.Range(0, XOffset.Length)];
-        Vector2 spawnPosition = new Vector2(transform.position.x + randomXOffset, lanes[selectedLane]); // Dikey pozisyonu belirle
-        Instantiate(coinPrefab, spawnPosition, Quaternion.identity, this.transform); // Coin oluştur
-    } */
 
     void SpawnCoins()
     {
