@@ -208,7 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 7327806989999933883, guid: 775abb4c333584c23ba88c0bccf0bcfa, type: 3}
-  startingPlatformPrefab: {fileID: 7327806989999933883, guid: 8717f93c70e844415a2110c9ac2a0e6b, type: 3}
   startingNumberOfPlatforms: 5
   platformParent: {fileID: 497308730}
   platformSize: 20

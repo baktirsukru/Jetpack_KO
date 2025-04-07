@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
 {
     [Header("Platform Settings")]
     [SerializeField] GameObject platformPrefab;
-    [SerializeField] GameObject startingPlatformPrefab;
+    //[SerializeField] GameObject startingPlatformPrefab;
     [SerializeField] int startingNumberOfPlatforms = 3;
     [SerializeField] Transform platformParent;
     [SerializeField] public float platformSize = 20f;
@@ -29,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
     void Update()
     {
         MovePlatforms();
+
     }
 
     public void SpeedUpPlatforms(float speedAmount, float duration) // PowerUp.cs
@@ -58,7 +59,7 @@ public class LevelGenerator : MonoBehaviour
         {
             if(i == 0)
             {
-                Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity);
+                //Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity);
                 
                 //StartingPlatform();
                 
@@ -129,6 +130,7 @@ public class LevelGenerator : MonoBehaviour
             GameObject currentPlatform = platforms[i];
 
             currentPlatform.transform.Translate(-transform.right * (platformSpeed * Time.deltaTime));
+
 
             float platformDestroyOffset = platformSize * 2;
 

@@ -17,6 +17,8 @@ public class BackgroundScroller : MonoBehaviour
     void Update()
     {
         myMaterial.mainTextureOffset += offSet * Time.deltaTime;
+        /* float newX = Mathf.Repeat(myMaterial.mainTextureOffset.x + scrollSpeed * Time.deltaTime, 1f);
+        myMaterial.mainTextureOffset = new Vector2(newX, 0f); */
     }
     public void SpeedUpBackground(float speedAmount, float duration)
     {
