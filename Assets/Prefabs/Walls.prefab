@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1400108565113826178}
   - component: {fileID: 5030861912226433066}
   - component: {fileID: 5384658971077152608}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Tilemap-Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +434,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 2679216439850222656}
   - component: {fileID: 7165877886369096790}
   - component: {fileID: 8559806152822213125}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5904832919830890713}
   - component: {fileID: 234158282721890507}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4636167349841810286}
   - component: {fileID: 8823532962979772717}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 3850502053308081277}
   - component: {fileID: 2344352936307449038}
   - component: {fileID: 6071250791673026644}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 1925260377425273161}
   - component: {fileID: 6894843594305458482}
   - component: {fileID: 5897127977571215100}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Tilemap-Ground-Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1163,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.7825651, y: 0.7825651, z: 0}
   m_MaxChunkCount: 16

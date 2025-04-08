@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8956024450911542900}
   - component: {fileID: 3210380551089210126}
   - component: {fileID: -2996157276070732442}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9661196, g: 0.9811321, b: 0, a: 1}
   m_FlipX: 0
@@ -195,13 +195,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1570335359649092006, guid: c36655b83c49418fa753cd857e7afb66, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1570335359649092007, guid: c36655b83c49418fa753cd857e7afb66, type: 3}
       propertyPath: m_Name
       value: bullet_gun
       objectReference: {fileID: 0}
     - target: {fileID: 1570335359649092007, guid: c36655b83c49418fa753cd857e7afb66, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
