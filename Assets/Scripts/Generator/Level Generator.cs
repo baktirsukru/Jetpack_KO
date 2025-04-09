@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
 {
     [Header("Platform Settings")]
     [SerializeField] GameObject platformPrefab;
-    //[SerializeField] GameObject startingPlatformPrefab;
+    [SerializeField] GameObject startingPlatformPrefab;
     [SerializeField] int startingNumberOfPlatforms = 3;
     [SerializeField] Transform platformParent;
     [SerializeField] public float platformSize = 20f;
@@ -53,19 +53,60 @@ public class LevelGenerator : MonoBehaviour
         platformSpeed -= speedAmount;
     }
 
+    GameObject CreatePlatform(GameObject prefab, Vector2 position)
+    {
+        GameObject newPlatform = Instantiate(prefab, position, Quaternion.identity, platformParent);
+        platforms.Add(newPlatform);
+
+        Platforms platform = newPlatform.GetComponent<Platforms>();
+        if (platform == null)
+        {
+            Debug.LogError("Prefab'da Platforms bileşeni eksik!");
+            return null;
+        }
+        platform.Init(this);
+        platformSpawned++;
+        Debug.Log("Platform Spawned: " + platformSpawned);
+
+        return newPlatform;
+    }
+
+
     void GeneratePlatforms()
     {    
         for (int i = 0; i < startingNumberOfPlatforms; i++)
         {
             if(i == 0)
             {
-                //Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity);
-                
-                //StartingPlatform();
-                
+                // İlk platformu transform.position'da oluşturuyoruz.
+                CreatePlatform(startingPlatformPrefab, transform.position);
             }
-            else SinglePlatformGenerate();
+            else
+            {
+                float startPositionX = SpawnPositionCalculation();
+                Vector2 spawnPosition = new Vector2(startPositionX, transform.position.y);
+                CreatePlatform(platformPrefab, spawnPosition);
+            }
         }
+    }
+
+    void StartingPlatformGenerate()
+    {
+        // İlk platform için doğrudan transform.position kullanabilirsiniz.
+        Vector2 spawnPosition = transform.position;
+        GameObject newPlatform = Instantiate(startingPlatformPrefab, spawnPosition, Quaternion.identity, platformParent);
+        
+        platforms.Add(newPlatform);
+        Platforms platform = newPlatform.GetComponent<Platforms>();
+        if (platform == null)
+        {
+            Debug.LogError("Starting platform prefab'da Platforms bileşeni eksik!");
+            return;
+        }
+        platform.Init(this);
+        platformSpawned++;
+        Debug.Log("Starting Platform Spawned: " + platformSpawned);
+        
     }
 
 
@@ -87,26 +128,7 @@ public class LevelGenerator : MonoBehaviour
         Debug.Log("Platform Spawned: " + platformSpawned);
 
     }
-    /* private void ChoosePlatformToSpawn()
-    {
-        if (platformSpawned == 0)
-        {
-            StartingPlatform();
-        }
-        else
-        {
-            // GeneratePlatforms();
-            SinglePlatformGenerate();
-        }
-    } */
-    /* void StartingPlatform()
-    {
-        Instantiate(startingPlatformPrefab, transform.position, Quaternion.identity);
-        platformSpawned++;
-    } */
-
-
-
+    
     private float SpawnPositionCalculation()
     {
         float startPositionX;
@@ -142,7 +164,5 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-
-    
 
 }
