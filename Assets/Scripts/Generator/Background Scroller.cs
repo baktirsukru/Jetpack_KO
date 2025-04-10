@@ -7,18 +7,33 @@ public class BackgroundScroller : MonoBehaviour
     [SerializeField] float scrollSpeed = 0.5f;
     Material myMaterial;
     Vector2 offSet;
+
+    private bool gameStarted = false;
+    private float desiredScrollSpeed;
+
     void Start()
     {
         myMaterial = GetComponent<Renderer>().material;
+        // Asıl kayma hızını saklıyoruz
+        desiredScrollSpeed = scrollSpeed;
+        // Oyun başlamadan önce arka planın hareket etmemesi için hız 0
+        scrollSpeed = 0f;
+
         offSet = new Vector2(scrollSpeed, 0f);
     }
 
-
     void Update()
     {
+        if (!gameStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            gameStarted = true;
+            scrollSpeed = desiredScrollSpeed; // Asıl kayma hızını geri veriyoruz.
+            offSet = new Vector2(scrollSpeed, 0f);
+            Debug.Log("Background scrolling started at speed: " + scrollSpeed);
+        }
+        
         myMaterial.mainTextureOffset += offSet * Time.deltaTime;
-        /* float newX = Mathf.Repeat(myMaterial.mainTextureOffset.x + scrollSpeed * Time.deltaTime, 1f);
-        myMaterial.mainTextureOffset = new Vector2(newX, 0f); */
+        
     }
     public void SpeedUpBackground(float speedAmount, float duration)
     {

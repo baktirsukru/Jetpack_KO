@@ -17,19 +17,45 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float maxPlatformSpeed = 100f;
 
     int platformSpawned = 0;
-
-    
-
     List<GameObject> platforms = new List<GameObject>();
+    private bool gameStarted = false;
+    private float desiredPlatformSpeed;
     void Start()
     {
+        desiredPlatformSpeed = platformSpeed;
+        platformSpeed = 0f;
         GeneratePlatforms();
     }
 
     void Update()
     {
+        bool flowControl = CheckSpaceIsPressed();
+        if (!flowControl)
+        {
+            return;
+        }
+
         MovePlatforms();
 
+    }
+
+    private bool CheckSpaceIsPressed()
+    {
+        if (!gameStarted)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gameStarted = true;
+                platformSpeed = desiredPlatformSpeed;  // Oyuna başlandığında asıl hız değerini geri yükle.
+                Debug.Log("Oyun Başladı, platform hızı: " + platformSpeed);
+            }
+            else
+            {
+                return false; // space tuşuna basılmadıysa, diğer işlemleri yapma.
+            }
+        }
+
+        return true;
     }
 
     public void SpeedUpPlatforms(float speedAmount, float duration) // PowerUp.cs
