@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 80f3a6116bb4a420fb2ae68e1168e17a
+guid: 7b5a1a5d65a4a45c981cca03ecd9cd25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 908667957295616272
-    second: "Ads\u0131z tasar\u0131m (1)_0"
+      213: 9042680732544174539
+    second: 26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_0
+  - first:
+      213: 2214525368305436924
+    second: 26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_1
+  - first:
+      213: -924235609111173893
+    second: 26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ads\u0131z tasar\u0131m (1)_0"
+      name: 26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_0
       rect:
         serializedVersion: 2
-        x: 104
-        y: 630
-        width: 819
-        height: 42
+        x: 261
+        y: 742
+        width: 487
+        height: 878
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 011926d51bc3c9c00800000000000000
-      internalID: 908667957295616272
+      spriteID: bc98090573e0e7d70800000000000000
+      internalID: 9042680732544174539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_1
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 838
+        width: 374
+        height: 684
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf8cfe3e6139bbe10800000000000000
+      internalID: 2214525368305436924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_2
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 900
+        width: 307
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4692e3c947c23f0800000000000000
+      internalID: -924235609111173893
       vertices: []
       indices: 
       edges: []
@@ -138,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -147,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_0: 9042680732544174539
+      26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_1: 2214525368305436924
+      26BFD1BC-6B0E-448F-A7F9-E50A7EAECECC_2: -924235609111173893
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

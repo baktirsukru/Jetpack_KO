@@ -31,7 +31,7 @@ public class BackgroundScroller : MonoBehaviour
             offSet = new Vector2(scrollSpeed, 0f);
             Debug.Log("Background scrolling started at speed: " + scrollSpeed);
         }
-        
+
         myMaterial.mainTextureOffset += offSet * Time.deltaTime;
         
     }
@@ -43,7 +43,7 @@ public class BackgroundScroller : MonoBehaviour
     
     IEnumerator SpeedBoostCoroutine(float speedAmount, float duration)
     {
-        float newSpeed = scrollSpeed + (speedAmount/10);
+        float newSpeed = scrollSpeed + (speedAmount/50);
         offSet = new Vector2(newSpeed, 0f);
         Debug.Log("Speed Boost:" + newSpeed);
         yield return new WaitForSeconds(duration);
