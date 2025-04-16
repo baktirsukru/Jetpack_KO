@@ -76,7 +76,12 @@ public class ScoreManager : MonoBehaviour
     // Oyuncunun örneğin engele çarpması gibi durumlarda çarpanı sıfırlamak için kullanılabilir.
     public void ResetMultiplier()
     {
-        scoreMultiplier = 1;
+        if(scoreMultiplier <= 1)
+        {
+            Debug.Log("Skor çarpanı zaten sıfır.");
+            return;
+        }
+        scoreMultiplier = scoreMultiplier - 1;
         Debug.Log("Skor çarpanı sıfırlandı.");
     }
 

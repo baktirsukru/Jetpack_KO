@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     // Bu metod oyun bittiğinde çağrılacak
     public static void GameOver()
     {
-        if (gameOver) return;
+        if (gameOver) return; // Oyun zaten bitmişse çık
 
         gameOver = true;
         Debug.Log("GameManager: Oyun Bitti!");

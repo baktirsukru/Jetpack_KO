@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea79c24821aa4886a54e81e58e39d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 99
   player: {fileID: 1474186983}
   levelGenerator: {fileID: 297586843}
   backgroundScroller: {fileID: 1890705765}
