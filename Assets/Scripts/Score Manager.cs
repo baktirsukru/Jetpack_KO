@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int totalScore = 0;      // Toplam skor
 
     private Coroutine scoreCoroutine; // Coroutine referansı
+    private bool gameIsOver = false;  // Oyun bittiğinde true olacak bayrak
 
 
     private void Awake()
@@ -34,12 +35,12 @@ public class ScoreManager : MonoBehaviour
     private void OnEnable()
     {
         // GameManager'dan oyunun bitme olayını dinle
-        GameManager.GameOverEvent += StopScoreIncrease;
+        GameManager.GameOverEvent += OnGameOver;
     }
 
     private void OnDisable()
     {
-        GameManager.GameOverEvent -= StopScoreIncrease;
+        GameManager.GameOverEvent -= OnGameOver;
     }
 
     public void Start()
@@ -49,7 +50,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator AutoIncreaseScore()
     {
-        while (true) // Sonsuz döngü, oyun objesi aktif olduğu sürece çalışır
+        while (!gameIsOver) // Sonsuz döngü, oyun objesi aktif olduğu sürece çalışır
         {
             IncreaseScore(scorePerInterval); // Skoru artır
             yield return new WaitForSeconds(interval); // Belirtilen saniye kadar bekle
@@ -77,6 +78,13 @@ public class ScoreManager : MonoBehaviour
     {
         scoreMultiplier = 1;
         Debug.Log("Skor çarpanı sıfırlandı.");
+    }
+
+    // Oyun bittiğinde tetiklenecek metod.
+    private void OnGameOver()
+    {
+        gameIsOver = true;
+        StopScoreIncrease();
     }
 
     void StopScoreIncrease()
