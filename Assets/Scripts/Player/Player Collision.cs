@@ -29,7 +29,8 @@ public class PlayerCollision : MonoBehaviour
     {
         isInvincible = true;
         //engele çarpmasını engelle
-        Physics2D.IgnoreLayerCollision(6, 7, true); // 6 = Player, 7 = Obstacle
+        Physics2D.IgnoreLayerCollision(9, 8, true); // 6 = Player, 7 = Obstacle  9 = PlayerLayer, 8 = ObstacleLayer
+        // Blink efekti
 
         float elapsedTime = 0f;
         while (elapsedTime < invincibilityDuration)
@@ -42,6 +43,6 @@ public class PlayerCollision : MonoBehaviour
         spriteRenderer.enabled = true;
         isInvincible = false;
         //engele çarpmasını tekrar aktive et
-        Physics2D.IgnoreLayerCollision(6, 7, false);
+        Physics2D.IgnoreLayerCollision(9, 8, false);
     }
 }
