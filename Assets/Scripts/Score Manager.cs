@@ -85,7 +85,7 @@ public class ScoreManager : MonoBehaviour
     {
         gameIsOver = true;
         StopScoreIncrease();
-        Debug.Log("Oyun bitti gameoveramk");
+        Debug.Log("Oyun bitti amk");
     }
 
     void StopScoreIncrease()

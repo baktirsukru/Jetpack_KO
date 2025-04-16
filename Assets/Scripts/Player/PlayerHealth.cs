@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
                 levelGenerator.enabled = false;
                 backgroundScroller.enabled = false;
                 player.SetActive(false);
-
+                
                 // Oyun bitti bilgisini GameManager üzerinden duyurun
                 GameManager.GameOver();
             }
