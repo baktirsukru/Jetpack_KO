@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle") && !isInvincible)
         {
+            ScoreManager.Instance.ResetMultiplier();
             StartCoroutine(ActivateInvincibility());
         }
     }
@@ -26,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
     IEnumerator ActivateInvincibility()
     {
         isInvincible = true;
+        //engele çarpmasını engelle
         Physics2D.IgnoreLayerCollision(6, 7, true); // 6 = Player, 7 = Obstacle
 
         float elapsedTime = 0f;
@@ -38,6 +41,7 @@ public class PlayerCollision : MonoBehaviour
 
         spriteRenderer.enabled = true;
         isInvincible = false;
+        //engele çarpmasını tekrar aktive et
         Physics2D.IgnoreLayerCollision(6, 7, false);
     }
 }

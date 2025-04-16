@@ -20,10 +20,14 @@ public class PlayerHealth : MonoBehaviour
 
             if(health <= 0)
             {
-                Debug.Log("Game Over");
+                Debug.Log("PlayerHealth: Game Over");
+                // Oyuna ait diğer işlemleri devre dışı bırakın
                 levelGenerator.enabled = false;
                 backgroundScroller.enabled = false;
                 player.SetActive(false);
+
+                // Oyun bitti bilgisini GameManager üzerinden duyurun
+                GameManager.GameOver();
             }
         }
     }

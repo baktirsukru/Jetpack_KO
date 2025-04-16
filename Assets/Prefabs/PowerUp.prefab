@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpDuration: 2
   powerUpSpeedAmount: 10
+  additionalMultiplierValue: 1
 --- !u!61 &3120144728950251153
 BoxCollider2D:
   m_ObjectHideFlags: 0
