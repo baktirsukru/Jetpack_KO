@@ -87,7 +87,6 @@ public class LevelGenerator : MonoBehaviour
         Platforms platform = newPlatform.GetComponent<Platforms>();
         if (platform == null)
         {
-            Debug.LogError("Prefab'da Platforms bileşeni eksik!");
             return null;
         }
         platform.Init(this);

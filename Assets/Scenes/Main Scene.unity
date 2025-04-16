@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interval: 1
   scorePerInterval: 10
+  scoreMultiplier: 1
+  multiplierDuration: 10
 --- !u!1 &297586840
 GameObject:
   m_ObjectHideFlags: 0
