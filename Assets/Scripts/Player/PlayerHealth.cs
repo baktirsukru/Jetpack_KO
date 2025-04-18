@@ -1,7 +1,9 @@
 using UnityEngine;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static event Action<int> OnHealthChanged;
     [SerializeField] int health = 3;
     [SerializeField] GameObject player;
     [SerializeField] LevelGenerator levelGenerator;
@@ -16,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
         {
             health--;
             Debug.Log("Health: " + health);
+
+            OnHealthChanged?.Invoke(health);
             
 
             if(health <= 0)
@@ -25,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
                 levelGenerator.enabled = false;
                 backgroundScroller.enabled = false;
                 player.SetActive(false);
-                
+
                 // Oyun bitti bilgisini GameManager üzerinden duyurun
                 GameManager.GameOver();
             }

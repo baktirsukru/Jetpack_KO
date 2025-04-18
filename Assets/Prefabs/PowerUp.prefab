@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3229353c8dc44f4981e5ff97c0ca0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpDuration: 15
-  powerUpSpeedAmount: 6
+  powerUpDuration: 3
+  powerUpSpeedAmount: 8
   additionalMultiplierValue: 1
 --- !u!61 &3120144728950251153
 BoxCollider2D:

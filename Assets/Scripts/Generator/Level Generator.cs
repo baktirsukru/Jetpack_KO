@@ -13,13 +13,26 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] Transform platformParent;
     [SerializeField] public float platformSize = 20f;
     [SerializeField] public float platformSpeed = 5f;
-    [SerializeField] float minPlatformSpeed = 5f;
+    [SerializeField] float minPlatformSpeed = 10f;
     [SerializeField] float maxPlatformSpeed = 100f;
+    
 
     int platformSpawned = 0;
     List<GameObject> platforms = new List<GameObject>();
     private bool gameStarted = false;
     private float desiredPlatformSpeed;
+
+
+    void OnEnable()
+    {
+        PlayerHealth.OnHealthChanged += OnHealthChanged;
+    }
+    void OnDisable()
+    {
+        PlayerHealth.OnHealthChanged -= OnHealthChanged;
+    }
+
+
     void Start()
     {
         desiredPlatformSpeed = platformSpeed;
@@ -75,9 +88,35 @@ public class LevelGenerator : MonoBehaviour
         platformSpeed = newPlatformSpeed;
 
         yield return new WaitForSeconds(duration);
-
-        platformSpeed -= speedAmount;
+        
+        if(platformSpeed > minPlatformSpeed)
+        {
+            platformSpeed -= speedAmount;
+        }
+        else
+        {
+            platformSpeed = minPlatformSpeed;
+        }
     }
+
+    void OnHealthChanged(int health)
+    {
+        if (health != 0 && platformSpeed > minPlatformSpeed)
+    {
+        platformSpeed -= 8f;
+
+        // Hız baseSpeed'in altına düştüyse, base'e sabitle
+        if (platformSpeed < minPlatformSpeed)
+        {
+            platformSpeed = minPlatformSpeed;
+        }
+
+        Debug.Log("Oyuncu engele çarptı! Platform hızı: " + platformSpeed);
+    } 
+        
+    }
+
+   
 
     GameObject CreatePlatform(GameObject prefab, Vector2 position)
     {
@@ -91,7 +130,7 @@ public class LevelGenerator : MonoBehaviour
         }
         platform.Init(this);
         platformSpawned++;
-        Debug.Log("Platform Spawned: " + platformSpawned);
+        //Debug.Log("Platform Spawned: " + platformSpawned);
 
         return newPlatform;
     }

@@ -9,6 +9,7 @@ public class PowerUp : Pickup
 
     LevelGenerator levelGenerator;
     BackgroundScroller backgroundScroller;
+    
 
     public void Init(LevelGenerator levelGenerator)
     {
@@ -19,6 +20,7 @@ public class PowerUp : Pickup
     {
         backgroundScroller = FindFirstObjectByType<BackgroundScroller>();
     }
+
 
     protected override void OnPickup()
     {
