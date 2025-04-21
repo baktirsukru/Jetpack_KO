@@ -15,8 +15,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] public float platformSpeed = 5f;
     [SerializeField] float minPlatformSpeed = 10f;
     [SerializeField] float maxPlatformSpeed = 100f;
-    
 
+    private float lastSpeedBoostAmount;
     int platformSpawned = 0;
     List<GameObject> platforms = new List<GameObject>();
     private bool gameStarted = false;
@@ -81,38 +81,28 @@ public class LevelGenerator : MonoBehaviour
 
     public IEnumerator SpeedBoostCoroutine(float speedAmount, float duration) // PowerUp.cs
     {
-        Debug.Log("Speed Boost Coroutine Started");
-        float newPlatformSpeed = platformSpeed + speedAmount;
-        newPlatformSpeed = Mathf.Clamp(newPlatformSpeed, minPlatformSpeed, maxPlatformSpeed);
+        // speedAmount'ı saklıyoruz
+        lastSpeedBoostAmount = speedAmount;
 
-        platformSpeed = newPlatformSpeed;
+        // hızı arttır
+        platformSpeed = Mathf.Clamp(platformSpeed + speedAmount, minPlatformSpeed, maxPlatformSpeed);
+        Debug.Log("Speed Boost Applied: " + platformSpeed);
 
         yield return new WaitForSeconds(duration);
-        
-        if(platformSpeed > minPlatformSpeed)
-        {
-            platformSpeed -= speedAmount;
-        }
-        else
-        {
-            platformSpeed = minPlatformSpeed;
-        }
+
+        // süre dolunca aynı miktarda geri çek
+        platformSpeed = Mathf.Max(platformSpeed - lastSpeedBoostAmount, minPlatformSpeed);
+        Debug.Log("Speed Boost Ended: " + platformSpeed);
     }
 
     void OnHealthChanged(int health)
     {
-        if (health != 0 && platformSpeed > minPlatformSpeed)
-    {
-        platformSpeed -= 8f;
+        // eğer oyun bitti ise veya henüz hiç boost değeri yoksa çık
+        if (health <= 0 || lastSpeedBoostAmount <= 0f) return;
 
-        // Hız baseSpeed'in altına düştüyse, base'e sabitle
-        if (platformSpeed < minPlatformSpeed)
-        {
-            platformSpeed = minPlatformSpeed;
-        }
-
-        Debug.Log("Oyuncu engele çarptı! Platform hızı: " + platformSpeed);
-    } 
+        // boost kadar yavaşlat; minPlatformSpeed'in altına inmesin
+        platformSpeed = Mathf.Max(platformSpeed - lastSpeedBoostAmount, minPlatformSpeed);
+        Debug.Log($"Oyuncu engele çarptı! Platform hızı: {platformSpeed}");
         
     }
 

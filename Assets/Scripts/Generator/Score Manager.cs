@@ -90,7 +90,7 @@ public class ScoreManager : MonoBehaviour
     {
         gameIsOver = true;
         StopScoreIncrease();
-        Debug.Log("Oyun bitti amk");
+        Debug.Log("Oyun bitti!!! ");
     }
 
     void StopScoreIncrease()
