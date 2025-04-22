@@ -21,7 +21,7 @@ public class LevelGenerator : MonoBehaviour
     List<GameObject> platforms = new List<GameObject>();
     private bool gameStarted = false;
     private float desiredPlatformSpeed;
-    private Coroutine speedBoostCoroutine;
+
 
 
 
@@ -75,14 +75,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void SpeedUpPlatforms(float speedAmount, float duration) // PowerUp.cs
     {
-        //StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
-
-        if (speedBoostCoroutine != null)
-        StopCoroutine(speedBoostCoroutine);
-
-        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
-
-        //Debug.Log("Speed Boosted");
+        StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
     }
 
     public IEnumerator SpeedBoostCoroutine(float speedAmount, float duration) // PowerUp.cs
@@ -101,15 +94,6 @@ public class LevelGenerator : MonoBehaviour
         Debug.Log("Speed Boost Ended: " + platformSpeed);
     }
 
-        public void StopSpeedBoost()
-    {
-        if (speedBoostCoroutine != null)
-        {
-            StopCoroutine(speedBoostCoroutine);
-            speedBoostCoroutine = null;
-        }
-        platformSpeed = minPlatformSpeed;
-    }
 
     void OnHealthChanged(int health)
     {
