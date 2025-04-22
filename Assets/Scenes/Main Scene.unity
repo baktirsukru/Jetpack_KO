@@ -663,6 +663,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invincibilityDuration: 2
   blinkInterval: 0.2
+  playerLayer: 9
+  obstacleLayer: 8
 --- !u!114 &1474186990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,10 +677,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea79c24821aa4886a54e81e58e39d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 99
   player: {fileID: 1474186983}
   levelGenerator: {fileID: 297586843}
   backgroundScroller: {fileID: 1890705765}
+  playerEffects: {fileID: 0}
 --- !u!114 &1474186991
 MonoBehaviour:
   m_ObjectHideFlags: 0

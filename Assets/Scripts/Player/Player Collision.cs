@@ -12,7 +12,10 @@ public class PlayerCollision : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Collider2D playerCollider;
     private PlayerEffects playerEffects;
+    private BackgroundScroller backgroundScroller;
     private bool isInvincible = false;
+
+
 
     void Awake()
     {
@@ -20,6 +23,8 @@ public class PlayerCollision : MonoBehaviour
         spriteRenderer = transform.Find("Astro").GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
         playerEffects = GetComponent<PlayerEffects>();
+        FindFirstObjectByType<BackgroundScroller>();
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -30,11 +35,16 @@ public class PlayerCollision : MonoBehaviour
             // Immediately stop any active speed boost effect
             playerEffects?.StopSpeedBoostEffect();
 
+            // Also stop background boost
+            backgroundScroller?.StopSpeedBoostEffect();
+
             // Reset score multiplier
             ScoreManager.Instance.ResetMultiplier();
 
             // Begin temporary invincibility
             StartCoroutine(ActivateInvincibility());
+
+
         }
     }
 
