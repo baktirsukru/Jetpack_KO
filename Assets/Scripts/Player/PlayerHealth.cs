@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
             OnHealthChanged?.Invoke(health);
             /* levelGenerator.StopSpeedBoost();
             backgroundScroller.StopSpeedBoost(); */
-            playerEffects.StopSpeedEffect();
+            //playerEffects.StopSpeedBoostEffect();
 
             
 

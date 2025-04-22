@@ -10,32 +10,36 @@ public class PlayerEffects : MonoBehaviour
     {
         if (speedBoostEffect == null) return;
 
+        // cancel any pending stop and current emission
+        StopSpeedBoostEffect();
+
+        // play the effect anew
         speedBoostEffect.Play();
 
-        if (stopEffectCoroutine != null)
-            StopCoroutine(stopEffectCoroutine);
-
+        // schedule stopping
         stopEffectCoroutine = StartCoroutine(StopAfter(duration));
     }
 
     private IEnumerator StopAfter(float duration)
     {
         yield return new WaitForSeconds(duration);
-        speedBoostEffect.Stop();
-        stopEffectCoroutine = null;
+        StopSpeedBoostEffect();
+        
     }
 
-    public void StopSpeedEffect()
+    public void StopSpeedBoostEffect()
     {
+        // cancel the scheduled stop
         if (stopEffectCoroutine != null)
         {
             StopCoroutine(stopEffectCoroutine);
             stopEffectCoroutine = null;
         }
 
+        // if it's playing, stop emitting (particles already alive will fade out)
         if (speedBoostEffect != null && speedBoostEffect.isPlaying)
         {
-            speedBoostEffect.Stop();
+            speedBoostEffect.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
     }
 }

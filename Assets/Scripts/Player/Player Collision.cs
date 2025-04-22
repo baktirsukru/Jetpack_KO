@@ -1,48 +1,62 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using System.Collections;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [Header("Invincibility Settings")]
+    [SerializeField] private float invincibilityDuration = 2f;
+    [SerializeField] private float blinkInterval = 0.2f;
+    [SerializeField] private int playerLayer = 9;
+    [SerializeField] private int obstacleLayer = 8;
+
     private SpriteRenderer spriteRenderer;
     private Collider2D playerCollider;
+    private PlayerEffects playerEffects;
     private bool isInvincible = false;
-    public float invincibilityDuration = 2f;
-    public float blinkInterval = 0.2f;
 
-    void Start()
+    void Awake()
     {
+        // Cache references
         spriteRenderer = transform.Find("Astro").GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<Collider2D>();
+        playerEffects = GetComponent<PlayerEffects>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Obstacle") && !isInvincible)
+        // Check for obstacle hit and invincibility
+        if (!isInvincible && other.gameObject.layer == obstacleLayer)
         {
+            // Immediately stop any active speed boost effect
+            playerEffects?.StopSpeedBoostEffect();
+
+            // Reset score multiplier
             ScoreManager.Instance.ResetMultiplier();
+
+            // Begin temporary invincibility
             StartCoroutine(ActivateInvincibility());
         }
     }
 
-    IEnumerator ActivateInvincibility()
+    private IEnumerator ActivateInvincibility()
     {
         isInvincible = true;
-        //engele çarpmasını engelle
-        Physics2D.IgnoreLayerCollision(9, 8, true); // 6 = Player, 7 = Obstacle  9 = PlayerLayer, 8 = ObstacleLayer
-        // Blink efekti
 
-        float elapsedTime = 0f;
-        while (elapsedTime < invincibilityDuration)
+        // Ignore collisions with obstacles
+        Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, true);
+
+        float elapsed = 0f;
+        while (elapsed < invincibilityDuration)
         {
+            // Blink effect
             spriteRenderer.enabled = !spriteRenderer.enabled;
             yield return new WaitForSeconds(blinkInterval);
-            elapsedTime += blinkInterval;
+            elapsed += blinkInterval;
         }
 
+        // Restore visibility and collision
         spriteRenderer.enabled = true;
+        Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, false);
         isInvincible = false;
-        //engele çarpmasını tekrar aktive et
-        Physics2D.IgnoreLayerCollision(9, 8, false);
     }
 }
