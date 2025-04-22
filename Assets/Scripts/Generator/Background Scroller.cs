@@ -10,6 +10,8 @@ public class BackgroundScroller : MonoBehaviour
 
     private bool gameStarted = false;
     private float desiredScrollSpeed;
+    private Coroutine speedBoostCoroutine;
+
 
     void Start()
     {
@@ -37,8 +39,13 @@ public class BackgroundScroller : MonoBehaviour
     }
     public void SpeedUpBackground(float speedAmount, float duration)
     {
-        StopAllCoroutines();
-        StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
+        /* StopAllCoroutines();
+        StartCoroutine(SpeedBoostCoroutine(speedAmount, duration)); */
+
+        if (speedBoostCoroutine != null)
+        StopCoroutine(speedBoostCoroutine);
+
+        speedBoostCoroutine = StartCoroutine(SpeedBoostCoroutine(speedAmount, duration));
     }
     
     IEnumerator SpeedBoostCoroutine(float speedAmount, float duration)
@@ -50,5 +57,16 @@ public class BackgroundScroller : MonoBehaviour
         offSet = new Vector2(scrollSpeed, 0f);
 
     }
+
+        public void StopSpeedBoost()
+    {
+        if (speedBoostCoroutine != null)
+        {
+            StopCoroutine(speedBoostCoroutine);
+            speedBoostCoroutine = null;
+        }
+        offSet = new Vector2(scrollSpeed, 0f);
+    }
+
 
 }

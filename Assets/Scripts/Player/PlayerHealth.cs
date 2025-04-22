@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] LevelGenerator levelGenerator;
     [SerializeField] BackgroundScroller backgroundScroller;
+    [SerializeField] PlayerEffects playerEffects; // inspector
+
 
 
 
@@ -16,10 +18,15 @@ public class PlayerHealth : MonoBehaviour
 
         if(other.gameObject.CompareTag("Obstacle"))
         {
+            
             health--;
             Debug.Log("Health: " + health);
 
             OnHealthChanged?.Invoke(health);
+            /* levelGenerator.StopSpeedBoost();
+            backgroundScroller.StopSpeedBoost(); */
+            playerEffects.StopSpeedEffect();
+
             
 
             if(health <= 0)
