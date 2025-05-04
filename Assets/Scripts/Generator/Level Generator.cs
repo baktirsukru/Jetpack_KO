@@ -16,6 +16,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] float minPlatformSpeed = 10f;
     [SerializeField] float maxPlatformSpeed = 100f;
 
+
+
+    
+
     private float lastSpeedBoostAmount;
     int platformSpawned = 0;
     List<GameObject> platforms = new List<GameObject>();
@@ -54,7 +58,7 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
-    private bool CheckSpaceIsPressed()
+    private bool CheckSpaceIsPressed() 
     {
         if (!gameStarted)
         {

@@ -15,6 +15,8 @@ public class ScoreManager : MonoBehaviour
 
     private Coroutine scoreCoroutine; // Coroutine referansı
     private bool gameIsOver = false;  // Oyun bittiğinde true olacak bayrak
+    private bool gameStarted = false; // Oyun başladığında true olacak bayrak
+
 
 
     private void Awake()
@@ -43,10 +45,21 @@ public class ScoreManager : MonoBehaviour
         GameManager.GameOverEvent -= OnGameOver;
     }
 
-    public void Start()
+    /* public void Start()
     {
         scoreCoroutine = StartCoroutine(AutoIncreaseScore());
-    } 
+        
+    }  */
+
+    private void Update()
+    {
+        if(!gameStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            gameStarted = true;
+            scoreCoroutine = StartCoroutine(AutoIncreaseScore());
+            Debug.Log("Oyun başladı, skor artışı başlatıldı.");
+        }
+    }
 
     IEnumerator AutoIncreaseScore()
     {
@@ -92,6 +105,7 @@ public class ScoreManager : MonoBehaviour
         StopScoreIncrease();
         Debug.Log("Oyun bitti!!! ");
     }
+
 
     void StopScoreIncrease()
     {
