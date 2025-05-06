@@ -15,9 +15,6 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] public float platformSpeed = 5f;
     [SerializeField] float minPlatformSpeed = 10f;
     [SerializeField] float maxPlatformSpeed = 100f;
-
-
-
     
 
     private float lastSpeedBoostAmount;
